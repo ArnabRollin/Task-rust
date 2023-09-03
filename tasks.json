@@ -1,0 +1,15 @@
+[
+	{
+		"name": "taskdebug",
+		"command": "target/debug/task"
+	},
+	{
+		"name": "task",
+		"command": "target/release/task"
+	},
+	{
+		"name": "publish",
+		"command": "cargo build --release && cp ./target/release/task /Users/baikunthaphukan/bin/task"
+	},
+	{ "name": "echo", "command": "dotnet" }
+]
