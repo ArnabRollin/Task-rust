@@ -27,17 +27,22 @@ fn main() {
 
     if args.len() > 0 {
         let do_task = args.nth(0).unwrap();
+        let mut arguments: Vec<String> = vec![];
+
+        for arg in args {
+            arguments.push(arg);
+        }
 
         for task in data {
             if task.name == do_task {
-                println!("executing: {}", task.command);
-                exec_command(&task.command);
+                println!("executing: {} {:?}", task.command, &arguments);
+                exec_command(&task.command, &arguments);
             }
         }
     }
 }
 
-fn exec_command(command: &str) {
+fn exec_command(command: &str, arguments: &Vec<String>) {
     let mut commands = command.split("&&").map(str::trim);
 
     if let Some(cmd) = commands.next() {
@@ -47,6 +52,7 @@ fn exec_command(command: &str) {
 
         let output = Command::new(command)
             .args(args)
+            .args(arguments)
             .output()
             .expect("Failed to execute task");
 
