@@ -11,5 +11,5 @@
 		"name": "publish",
 		"command": "cargo build --release && cp ./target/release/task /Users/baikunthaphukan/bin/task"
 	},
-	{ "name": "echo", "command": "dotnet" }
+	{ "name": "test", "command": "echo Hello" }
 ]
